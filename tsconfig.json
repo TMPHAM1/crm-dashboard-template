@@ -14,7 +14,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "./src", // Tells Typescript where do we start checking 
+    "paths": {
+      "@/*": ["./*"] // Short hand shortcut so that TS knows how we want to refer to specific files which is the base url 
+    }
   },
   "include": ["src", "vite.config.ts"],
   "references": [

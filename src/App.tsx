@@ -3,6 +3,8 @@ import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import {Home, ForgotPassword, Login, Register} from './pages'
 import Layout from "./components/layout";
+import CreateTask from "./pages/tasks/create";
+import EditTask from "./pages/tasks/edit";
 
 import { useNotificationProvider } from "@refinedev/antd";
 import "@refinedev/antd/dist/reset.css";
@@ -20,12 +22,14 @@ import { App as AntdApp } from "antd";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { resources } from "./config/resources";
 import { CompanyList } from "./pages/company/list";
+import TaskList from "./pages/tasks/list"
+import Create from "./pages/company/create";
+import Edit from "./pages/company/edit";
 
 
 function App() {
   return (
     <BrowserRouter>
-      <GitHubBanner />
       <RefineKbarProvider>
           <AntdApp>
             <DevtoolsProvider>
@@ -48,6 +52,7 @@ function App() {
                   <Route  path="/login" element={<Login />} />
                   <Route  path="/forgot-password" element={<ForgotPassword />} />
                   <Route  path="/register" element={<Register />} />
+
                   <Route
                     element={<Authenticated
                       key="authenticated-layout"
@@ -59,8 +64,19 @@ function App() {
                     </Authenticated>}
                    >
                      <Route index element={<Home />} />
+                     <Route  path="/companies">
+                      <Route index element={<CompanyList/>} />
+                      <Route path="new" element ={<Create />}></Route>
+                      <Route path="edit/:id" element ={<Edit />}></Route>
+                     </Route>
+                     <Route  path="/tasks" element={<TaskList>
+                          <Outlet />
+                     </TaskList>}>
+                     <Route path="new" element={<CreateTask />} />
+                     <Route path="edit/:id" element={<EditTask />} />
+                     </Route>
                   </Route>
-                  <Route  path="/companies" element={<CompanyList/>}>Company List</Route>
+                  
                 </Routes>
                 <RefineKbar />
                 <UnsavedChangesNotifier />

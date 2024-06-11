@@ -23,13 +23,13 @@ export const resources: IResourceItem[] = [
         }
     },
     {
-        name: 'events',
-        list: '/events',
-        show: '/events/:id',
-        create: '/events/new',
-        edit: '/events/edit/:id',
+        name: 'tasks',
+        list: '/tasks',
+        show: '/tasks/:id',
+        create: '/tasks/new',
+        edit: '/tasks/edit/:id',
         meta: {
-            label: 'Events',
+            label: 'Tasks',
             icon: <ProjectOutlined />
         }
     }

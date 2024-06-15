@@ -8,7 +8,7 @@ import EditTask from "./pages/tasks/edit";
 
 import { useNotificationProvider } from "@refinedev/antd";
 import "@refinedev/antd/dist/reset.css";
-
+import { RefineThemes } from "@refinedev/antd";
 
 
 import {dataProvider, liveProvider} from './providers/data'
@@ -18,13 +18,14 @@ import routerBindings, {
   DocumentTitleHandler,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
-import { App as AntdApp } from "antd";
+import { App as AntdApp, ConfigProvider } from "antd";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { resources } from "./config/resources";
 import { CompanyList } from "./pages/company/list";
 import TaskList from "./pages/tasks/list"
 import Create from "./pages/company/create";
 import Edit from "./pages/company/edit";
+import { ThemeConfig } from "antd";
 
 
 function App() {
@@ -33,6 +34,23 @@ function App() {
       <RefineKbarProvider>
           <AntdApp>
             <DevtoolsProvider>
+            <ConfigProvider
+      theme={{
+        components: {
+          Button: {
+            borderRadius: 0,
+            primaryColor: 'black'
+          },
+          Typography: {
+            colorTextHeading: "black",
+          },
+        },
+        token: {
+          colorPrimary: "#FFCD00",
+        },
+      }}
+    >
+
               <Refine
                 dataProvider={dataProvider}
                 liveProvider={liveProvider}
@@ -82,6 +100,7 @@ function App() {
                 <UnsavedChangesNotifier />
                 <DocumentTitleHandler />
               </Refine>
+              </ConfigProvider>
               <DevtoolsPanel />
             </DevtoolsProvider>
           </AntdApp>

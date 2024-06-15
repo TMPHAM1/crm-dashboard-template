@@ -43,14 +43,13 @@ const KanbanColumn = ({children, id, title, description, count ,data, onAddClick
                     >
                         {title}
                     </Text>
-                    {!!count && <Badge count={count} color="cyan"/>}
+                    {!!count && <Badge count={count} color="#FFCD00"/>}
                     </Space>
                     <Button
                 shape="circle"
                 icon={<PlusOutlined />}
                 onClick={onAddClickHandler}
             >
-            
             </Button>
             </Space>
             {description}
@@ -60,7 +59,7 @@ const KanbanColumn = ({children, id, title, description, count ,data, onAddClick
                 flex:1,
                 overflowY: active ? 'unset' : 'auto',
                 border: '2px dashed transparent',
-                borderColor: isOver ? '#000040' : 'transparent',
+                borderColor: isOver ? '#FFCD00' : 'transparent',
                 borderRadius: '4px'
             }}
         >

@@ -50,6 +50,7 @@ const TasksEditPage = () => {
   const { description, dueDate, users, title } = queryResult?.data?.data ?? {};
 
   const isLoading = queryResult?.isLoading ?? true;
+  console.log('WE WERE REDIRECTED HERE BUT IT CLOSED????')
 
   return (
     <Modal

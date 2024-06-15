@@ -7,7 +7,7 @@ import { ClockCircleOutlined, DeleteOutlined, EyeOutlined, MoreOutlined } from '
 import { useDelete } from '@refinedev/core'
 import { Button, Card, ConfigProvider, Dropdown, MenuProps, Space, Tag, Tooltip, theme } from 'antd'
 import dayjs from 'dayjs'
-import React, { memo, useMemo } from 'react'
+import { memo, useMemo } from 'react'
 import { useNavigation } from '@refinedev/core'
 
 type ProjectCardProps = {
@@ -33,7 +33,9 @@ const dropdownItems = useMemo(()=> {
         {label: 'View card',
         key: '1',
         icon: <EyeOutlined/> ,
-        onClick: ()=> edit('tasks', id, 'replace')
+        onClick: ()=> {
+            console.log('THIS IS CALLING EDIT', edit);
+            edit('tasks', id, 'replace')}
     },
     {
         danger: true,
